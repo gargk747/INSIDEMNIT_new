@@ -27,6 +27,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         this.mContext=searchRecyclerView;
         this.searchClasses=searchClasses;
         this.filterSearchClass=searchClasses;
+
     }
 
     @NonNull

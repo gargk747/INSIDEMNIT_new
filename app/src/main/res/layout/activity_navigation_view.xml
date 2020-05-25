@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    tools:context=".NavigationView"
+    android:background="@color/colorWhite">
+
+
+    <TextView
+        android:clickable="true"
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/floating_type"
+        android:foreground="@drawable/ic_back" />
+    <SearchView
+        android:id="@+id/searchFrom"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/searchbarproperties"
+        android:layout_toRightOf="@id/backBtn"/>
+    <ImageView
+        android:id="@+id/gapBtw"
+        android:layout_below="@id/searchFrom"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:src="@drawable/gap"
+        android:layout_toRightOf="@id/backBtn"
+        />
+    <SearchView
+        android:id="@+id/searchTo"
+        android:background="@drawable/searchbarproperties"
+        android:layout_below="@id/gapBtw"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/backBtn"/>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchTo"
+        android:layout_marginTop="5dp"/>
+
+
+</RelativeLayout>

@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -42,10 +43,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     double defaultLng = 75.8143854;
     Location mlocation;
     LatLng latLng11;
+    double locationLat;
+    double locationLng;
+    String locationName1;
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int Request_code = 1;
-
     String api_key="AIzaSyAPEBZCsV9z-g0QlLU33GNuVO1C4h3GoO8";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,18 +68,22 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
-        locationBtn = findViewById(R.id.locationBtn);
-        locationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                map.clear();
-                getlastLocation();
-            }
-        });
 
+}
 
+    private void getIncomingIntent() {
+        Log.d("MainActivity","Incoming Intent");
+        if(getIntent().hasExtra("locationName")&& getIntent().hasExtra("locationLat")&&getIntent().hasExtra("locationLng")){
+            locationName1=getIntent().getStringExtra("locationName");
+            locationLat=getIntent().getDoubleExtra("locationLat",00);
+            locationLng=getIntent().getDoubleExtra("locationLng",00);
+            searchbar.setText(locationName1);
+            LatLng latLng111= new LatLng(locationLat,locationLng);
+            MarkerOptions markerOptions=new MarkerOptions().position(latLng111).title(locationName1);
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111,15));
+            map.addMarker(markerOptions);
+        }
     }
-
 
     private void getlastLocation() {
         if (ContextCompat.checkSelfPermission(MainActivity.this,
@@ -118,20 +127,22 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
 
-
-
+        getIncomingIntent();
         navBtn=findViewById(R.id.nav_btn);
         navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,NavigationView.class);
+                intent.putExtra("fromLocationName","Current Location");
+                intent.putExtra("fromLocationLat",mlocation.getLatitude());
+                intent.putExtra("fromLocationLng",mlocation.getLongitude());
+                intent.putExtra("toLocationName",locationName1);
+                intent.putExtra("toLocationLat",locationLat);
+                intent.putExtra("toLocationLng",locationLng);
                 startActivity(intent);
 
             }
@@ -149,6 +160,18 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
+        locationBtn = findViewById(R.id.locationBtn);
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                map.clear();
+                LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location");
+                map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                map.addMarker(markerOptions);
+            }
+        });
         MNIT_locationBtn=findViewById(R.id.locationMNITBtn);
         MNIT_locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,12 +182,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-        LatLng latLng= new LatLng(mlocation.getLatitude(),mlocation.getLongitude());
-        MarkerOptions markerOptions=new MarkerOptions().position(latLng).title("Current Location");
-        map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
-        map.addMarker(markerOptions);
-
 
     }
     private  void bounds(double lat, double lng){
@@ -174,6 +191,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         map.animateCamera(cameraUpdate);
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == Request_code && grantResults.length > 0) {
@@ -185,8 +203,4 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
-
-
-
 }

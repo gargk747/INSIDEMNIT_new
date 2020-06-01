@@ -16,10 +16,11 @@
         android:layout_height="40dp"
         android:background="@drawable/floating_type"
         android:foreground="@drawable/ic_back" />
-    <SearchView
+    <TextView
         android:id="@+id/searchFrom"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:textSize="20dp"
         android:background="@drawable/searchbarproperties"
         android:layout_toRightOf="@id/backBtn"/>
     <ImageView
@@ -30,10 +31,11 @@
         android:src="@drawable/gap"
         android:layout_toRightOf="@id/backBtn"
         />
-    <SearchView
+    <TextView
         android:id="@+id/searchTo"
         android:background="@drawable/searchbarproperties"
         android:layout_below="@id/gapBtw"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_toRightOf="@id/backBtn"/>

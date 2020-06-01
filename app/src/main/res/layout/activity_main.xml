@@ -18,11 +18,13 @@
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="  Search..."
+        android:hint="Search..."
+        android:drawableStart="@drawable/places_ic_search"
         android:layout_margin="8dp"
+        android:elevation="3dp"
         android:textSize="30dp"
         android:clickable="true"
-        android:background="@drawable/bg_round"
+        android:background="@drawable/searchbarproperties"
         />
     <ImageButton
         android:id="@+id/layerBtn"

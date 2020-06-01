@@ -1,11 +1,9 @@
 package com.example.insidemnit;
 
-import android.view.LayoutInflater;
-import android.widget.SearchView;
-
 import com.google.android.gms.maps.model.LatLng;
+import java.io.Serializable;
 
-public class SearchClass {
+public class SearchClass implements Serializable {
     private String location;
     private LatLng latLng;
 

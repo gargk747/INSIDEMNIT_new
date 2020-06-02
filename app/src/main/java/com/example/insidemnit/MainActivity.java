@@ -42,7 +42,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     double defalutLat = 26.8625892;
     double defaultLng = 75.8143854;
     Location mlocation;
-    LatLng latLng11;
     double locationLat;
     double locationLng;
     String locationName1;
@@ -63,9 +62,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
-
-
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
 
@@ -132,6 +128,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         map = googleMap;
 
         getIncomingIntent();
+
         navBtn=findViewById(R.id.nav_btn);
         navBtn.setOnClickListener(new View.OnClickListener() {
             @Override

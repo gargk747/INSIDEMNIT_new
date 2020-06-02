@@ -55,13 +55,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         searchbar=findViewById(R.id.searchbar);
-        searchbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,SearchRecyclerView.class);
-                startActivity(intent);
-            }
-        });
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
 
@@ -126,6 +120,17 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        searchbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,SearchRecyclerView.class);
+                intent.putExtra("currentLocation","Current Location");
+                intent.putExtra("curLocationLat",mlocation.getLatitude());
+                intent.putExtra("curLocationLng",mlocation.getLongitude());
+
+                startActivity(intent);
+            }
+        });
 
         getIncomingIntent();
 
@@ -133,14 +138,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,NavigationView.class);
-                intent.putExtra("fromLocationName","Current Location");
-                intent.putExtra("fromLocationLat",mlocation.getLatitude());
-                intent.putExtra("fromLocationLng",mlocation.getLongitude());
-                intent.putExtra("toLocationName",locationName1);
-                intent.putExtra("toLocationLat",locationLat);
-                intent.putExtra("toLocationLng",locationLng);
-                startActivity(intent);
+                Intent intent1=new Intent(MainActivity.this,NavigationView.class);
+                intent1.putExtra("fromLocationName","Current Location");
+                intent1.putExtra("fromLocationLat",mlocation.getLatitude());
+                intent1.putExtra("fromLocationLng",mlocation.getLongitude());
+                intent1.putExtra("toLocationName",locationName1);
+                intent1.putExtra("toLocationLat",locationLat);
+                intent1.putExtra("toLocationLng",locationLng);
+                startActivity(intent1);
 
             }
         });

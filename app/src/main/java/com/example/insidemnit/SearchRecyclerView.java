@@ -22,6 +22,7 @@ public class SearchRecyclerView extends AppCompatActivity {
         setContentView(R.layout.activity_search_recycler_view);
 
 
+        searchClasses.add(new SearchClass(getIntent().getStringExtra("currentLocation"),new LatLng(getIntent().getDoubleExtra("curLocationLat",0),getIntent().getDoubleExtra("curLocationLng",0))));
         searchClasses.add(new SearchClass("GARGI",new LatLng(26.864692, 75.814671)));
         searchClasses.add(new SearchClass("HOSTEL 1", new LatLng(26.862076, 75.815597)));
         searchClasses.add(new SearchClass("HOSTEL 2",new LatLng(26.862057, 75.815592)));

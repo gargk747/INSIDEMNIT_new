@@ -1,13 +1,13 @@
 package com.example.insidemnit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Switch;
 import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,8 +15,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
-public class NavigationView extends FragmentActivity implements OnMapReadyCallback {
+public class NavigationView extends FragmentActivity implements OnMapReadyCallback{
 
     GoogleMap map;
     String fromLocationName;
@@ -31,7 +32,6 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     TextView toSearch;
     MarkerOptions markerOptions;
     MarkerOptions markerOptions1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,6 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
         });
         fromSearch=findViewById(R.id.searchFrom);
         toSearch=findViewById(R.id.searchTo);
-
-
     }
 
     public void getIntentActivity(){
@@ -58,7 +56,8 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             fromLocationName=getIntent().getStringExtra("fromLocationName");
             fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
             fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
-            fromLatLng=new LatLng(fromLat,fromLng);
+           // fromLatLng=new LatLng(fromLat,fromLng);
+            fromLatLng= new LatLng(26.865109, 75.807679);
             toLocationName=getIntent().getStringExtra("toLocationName");
             toLat=getIntent().getDoubleExtra("toLocationLat",00);
             toLng=getIntent().getDoubleExtra("toLocationLng",00);
@@ -71,11 +70,22 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
 
             if(toLocationName!=null){
                 map.addMarker(markerOptions1);
-            bounds((fromLat+toLat)/2,(fromLng+toLng)/2);}
+            bounds((26.865109+toLat)/2,(75.807679+toLng)/2);}
             else{
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng, 15));
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng, 17));
             }
 
+            String locationString="26.865109&75.807679&&"+toLat+"&"+toLng;
+
+            DirectionRouteSearch(locationString);
+        }
+    }
+
+    private void DirectionRouteSearch(String locationString) {
+        String loction=locationString;
+        switch (loction){
+            case "26.865109&75.807679&&26.864692&75.814671":
+                map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.8641208,75.8123802)).add(new LatLng(26.8649378,75.8133903)).add(new LatLng(26.864816, 75.813957)).width(5).color(Color.RED));
         }
     }
 
@@ -83,16 +93,14 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         map=googleMap;
         getIntentActivity();
-
-
-
     }
 
     private  void bounds(double lat, double lng){
         LatLng  latlng = new LatLng(lat,lng);
 
-        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latlng,5);
+        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latlng,15);
         map.animateCamera(cameraUpdate);
 
     }
+
 }

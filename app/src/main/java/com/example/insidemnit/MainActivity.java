@@ -70,7 +70,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             searchbar.setText(locationName1);
             LatLng latLng111= new LatLng(locationLat,locationLng);
             MarkerOptions markerOptions=new MarkerOptions().position(latLng111).title(locationName1);
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111,15));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111,17));
             map.addMarker(markerOptions);
         }
     }
@@ -156,9 +156,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
                     map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    Toast.makeText(MainActivity.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    Toast.makeText(MainActivity.this, "NORMAL VIEW", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -172,6 +174,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
                 map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 map.addMarker(markerOptions);
+                Toast.makeText(MainActivity.this, "CURRENT LOCATION", Toast.LENGTH_SHORT).show();
             }
         });
         MNIT_locationBtn=findViewById(R.id.locationMNITBtn);
@@ -180,12 +183,14 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 map.clear();
                 bounds(defalutLat,defaultLng);
+                Toast.makeText(MainActivity.this, "MALAVIYA NATIONAL INSTITUTE OF TECHNOLOGY", Toast.LENGTH_SHORT).show();
             }
         });
 
 
 
     }
+
     private  void bounds(double lat, double lng){
         LatLng  latlng = new LatLng(lat,lng);
 

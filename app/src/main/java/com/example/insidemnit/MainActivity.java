@@ -26,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -138,7 +139,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(MainActivity.this,NavigationView.class);
+                Intent intent1=new Intent(MainActivity.this,NearestPointSelector.class);
                 intent1.putExtra("fromLocationName","Current Location");
                 intent1.putExtra("fromLocationLat",mlocation.getLatitude());
                 intent1.putExtra("fromLocationLng",mlocation.getLongitude());
@@ -170,7 +171,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view) {
                 map.clear();
                 LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
-                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location");
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                 map.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                 map.addMarker(markerOptions);

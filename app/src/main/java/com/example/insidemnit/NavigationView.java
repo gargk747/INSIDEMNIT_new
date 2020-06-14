@@ -35,8 +35,6 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     TextView toSearch;
     MarkerOptions markerOptions;
     MarkerOptions markerOptions1;
-    double LatitudeList[]={26.865109,26.865015};
-    double LongitudeList[]={75.807679,75.808016};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +59,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             fromLocationName=getIntent().getStringExtra("fromLocationName");
             fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
             fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
-           // fromLatLng=new LatLng(fromLat,fromLng);
-            fromLatLng= new LatLng(26.865109, 75.807679);
+            fromLatLng=new LatLng(fromLat,fromLng);
             toLocationName=getIntent().getStringExtra("toLocationName");
             toLat=getIntent().getDoubleExtra("toLocationLat",00);
             toLng=getIntent().getDoubleExtra("toLocationLng",00);
@@ -75,12 +72,12 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
 
             if(toLocationName!=null){
                 map.addMarker(markerOptions1);
-            bounds((26.865109+toLat)/2,(75.807679+toLng)/2);}
+            bounds((fromLat+toLat)/2,(fromLng+toLng)/2);}
             else{
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng, 17));
             }
 
-            String locationString="26.865109,75.807679&&"+toLat+","+toLng;
+            String locationString=fromLat+","+fromLng+"&&"+toLat+","+toLng;
 
             DirectionRouteSearch(locationString);
         }

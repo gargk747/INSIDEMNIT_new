@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NearestPointSelector"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nearestPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Your Nearest Point"
+        android:textColor="@color/colorBlack"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/square_textbox"/>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

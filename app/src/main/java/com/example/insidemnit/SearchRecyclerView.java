@@ -24,13 +24,12 @@ public class SearchRecyclerView extends AppCompatActivity {
 
         searchClasses.add(new SearchClass(getIntent().getStringExtra("currentLocation"),new LatLng(getIntent().getDoubleExtra("curLocationLat",0),getIntent().getDoubleExtra("curLocationLng",0))));
         searchClasses.add(new SearchClass("GARGI",new LatLng(26.864692, 75.814671)));
-        searchClasses.add(new SearchClass("HOSTEL 1", new LatLng(26.862076, 75.815597)));
-        searchClasses.add(new SearchClass("HOSTEL 2",new LatLng(26.862057, 75.815592)));
-        searchClasses.add(new SearchClass("HOSTEL 3",new LatLng(26.860678, 75.815590)));
+        searchClasses.add(new SearchClass("HOSTEL 1", new LatLng(26.862416, 75.816007)));
+        searchClasses.add(new SearchClass("HOSTEL 2",new LatLng(26.861856,75.815994)));
+        searchClasses.add(new SearchClass("HOSTEL 3",new LatLng(26.860658,75.815774)));
         searchClasses.add(new SearchClass("HOSTEL 4",new LatLng(26.8600513,75.8177366)));
         searchClasses.add(new SearchClass("HOSTEL 5",new LatLng(26.8605622,75.8172779)));
         searchClasses.add(new SearchClass("HOSTEL 6",new LatLng(26.8608169,75.8190871)));
-        searchClasses.add(new SearchClass("Hostel 6", new LatLng(26.8608169,75.8190871)));
         searchClasses.add(new SearchClass("Hostel 7", new LatLng(26.8596827,75.8184759)));
         searchClasses.add(new SearchClass("Hostel 8", new LatLng(26.8601717,75.8188556)));
         searchClasses.add(new SearchClass("Aurobindo", new LatLng(26.8627459,75.8202557)));

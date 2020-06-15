@@ -4,49 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
     tools:context=".NavigationView"
     android:background="@color/colorWhite">
 
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/upper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <TextView
+            android:clickable="true"
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/floating_type"
+            android:foreground="@drawable/ic_back" />
+        <TextView
+            android:id="@+id/searchFrom"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:textSize="20dp"
+            android:background="@drawable/searchbarproperties"
+            android:layout_toRightOf="@id/backBtn"/>
+        <ImageView
+            android:id="@+id/gapBtw"
+            android:layout_below="@id/searchFrom"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:src="@drawable/gap"
+            android:layout_toRightOf="@id/backBtn"
+            />
+        <TextView
+            android:id="@+id/searchTo"
+            android:background="@drawable/searchbarproperties"
+            android:layout_below="@id/gapBtw"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/backBtn"/>
+
+        
+
+    </RelativeLayout>
+    <ImageButton
+        android:id="@+id/layerBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:clickable="true"
-        android:id="@+id/backBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/floating_type"
-        android:foreground="@drawable/ic_back" />
-    <TextView
-        android:id="@+id/searchFrom"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:clickable="true"
-        android:textSize="20dp"
-        android:background="@drawable/searchbarproperties"
-        android:layout_toRightOf="@id/backBtn"/>
-    <ImageView
-        android:id="@+id/gapBtw"
-        android:layout_below="@id/searchFrom"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:src="@drawable/gap"
-        android:layout_toRightOf="@id/backBtn"
+        android:layout_below="@id/upper"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/layer"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/bg_round"
+        android:elevation="5dp"
         />
-    <TextView
-        android:id="@+id/searchTo"
-        android:background="@drawable/searchbarproperties"
-        android:layout_below="@id/gapBtw"
-        android:textSize="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_toRightOf="@id/backBtn"/>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchTo"
-        android:layout_marginTop="5dp"/>
+        android:layout_below="@id/upper"
+        />
 
 
 </RelativeLayout>

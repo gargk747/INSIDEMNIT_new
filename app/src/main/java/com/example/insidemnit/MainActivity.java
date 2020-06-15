@@ -11,6 +11,8 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -169,6 +171,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 map.clear();
                 LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
@@ -199,6 +202,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         map.animateCamera(cameraUpdate);
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

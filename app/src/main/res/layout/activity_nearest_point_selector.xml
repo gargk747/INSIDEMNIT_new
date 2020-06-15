@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,10 +18,39 @@
         android:layout_margin="5dp"
         android:background="@drawable/square_textbox"/>
 
+    <ImageButton
+        android:id="@+id/currentlocpin"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/blue_marker"
+        android:background="@drawable/floating_type"
+        android:elevation="5dp"
+
+        />
+
+    <ImageButton
+        android:id="@+id/layerBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:layout_below="@id/nearestPoint"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/layer"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/bg_round"
+        android:elevation="5dp"
+        />
+
     <fragment
+        android:layout_below="@id/nearestPoint"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

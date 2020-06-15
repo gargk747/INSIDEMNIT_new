@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
-    <ImageView
 
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+    <ImageView
         android:id="@+id/splash_img"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:src="@drawable/new_splash"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="153dp"
+        android:src="@drawable/new_splash" />
 
     <TextView
         android:layout_width="wrap_content"

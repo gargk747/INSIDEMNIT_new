@@ -5,7 +5,10 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,6 +32,7 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
     double toLat;
     double toLng;
     MarkerOptions markerOptions;
+    ImageButton layer;
     double LatitudeList[]={26.865109,26.865015,26.864954,26.864838,26.864788};
     double LongitudeList[]={75.807679,75.808016,75.808470,75.808864,75.809230};
     @Override
@@ -43,9 +47,9 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
     public void getIntentActivity(){
         if(getIntent().hasExtra("fromLocationName")&&getIntent().hasExtra("toLocationName")&&getIntent().hasExtra("fromLocationLat")&&getIntent().hasExtra("fromLocationLng")&&getIntent().hasExtra("toLocationLat")&&getIntent().hasExtra("toLocationLng")){
             fromLocationName=getIntent().getStringExtra("fromLocationName");
-            //fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
-            //fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
-            // fromLatLng=new LatLng(fromLat,fromLng);
+//            fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
+//            fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
+//            fromLatLng=new LatLng(fromLat,fromLng);
             fromLat=26.865210;
             fromLng=75.807578;
             fromLatLng= new LatLng(fromLat,fromLng);
@@ -53,26 +57,55 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
             toLat=getIntent().getDoubleExtra("toLocationLat",00);
             toLng=getIntent().getDoubleExtra("toLocationLng",00);
             toLatLng=new LatLng(toLat,toLng);
-            //fromSearch.setText("  "+fromLocationName);
-            //toSearch.setText("  "+toLocationName);
             markerOptions=new MarkerOptions().position(fromLatLng).title(fromLocationName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             map.addMarker(markerOptions);
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng,17));
-
-
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng,18));
         }
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map=googleMap;
         getIntentActivity();
+        layer= findViewById(R.id.layerBtn);
+        layer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    Toast.makeText(NearestPointSelector.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    Toast.makeText(NearestPointSelector.this, "NORMAL VIEW", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         for(int i=0;i<LatitudeList.length;i++){
-            if((fromLat-LatitudeList[i]<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
-                MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
-                map.addMarker(markerOptionss);
+            if(fromLat>LatitudeList[i]&&fromLng>LongitudeList[i]){
+                if((fromLat-LatitudeList[i]<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                    MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
+                    map.addMarker(markerOptionss);
+                }
+            }
+            else if(fromLat>LatitudeList[i]&&LongitudeList[i]>fromLng){
+                if((fromLat-LatitudeList[i]<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                    MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
+                    map.addMarker(markerOptionss);
+                }
+            }
+            else if(LatitudeList[i]>fromLat&&fromLng>LongitudeList[i]){
+                if((LatitudeList[i]-fromLat<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                    MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
+                    map.addMarker(markerOptionss);
+                }
+            }
+            else if(LatitudeList[i]>fromLat&&LongitudeList[i]>fromLng){
+                if((LatitudeList[i]-fromLat<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                    MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
+                    map.addMarker(markerOptionss);
+                }
             }
         }
         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -92,12 +125,5 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
         });
     }
 
-    private  void bounds(double lat, double lng){
-        LatLng  latlng = new LatLng(lat,lng);
-
-        CameraUpdate cameraUpdate= CameraUpdateFactory.newLatLngZoom(latlng,15);
-        map.animateCamera(cameraUpdate);
-
-    }
 
 }

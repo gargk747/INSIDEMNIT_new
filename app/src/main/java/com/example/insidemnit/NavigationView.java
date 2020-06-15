@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -33,6 +37,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     double toLng;
     TextView fromSearch;
     TextView toSearch;
+    ImageButton layer;
     MarkerOptions markerOptions;
     MarkerOptions markerOptions1;
 
@@ -66,7 +71,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             toLatLng=new LatLng(toLat,toLng);
             fromSearch.setText("  "+fromLocationName);
             toSearch.setText("  "+toLocationName);
-            markerOptions=new MarkerOptions().position(fromLatLng).title(fromLocationName);
+            markerOptions=new MarkerOptions().position(fromLatLng).title(fromLocationName).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             markerOptions1=new MarkerOptions().position(toLatLng).title(toLocationName);
             map.addMarker(markerOptions);
 
@@ -123,6 +128,21 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         map=googleMap;
         getIntentActivity();
+
+        layer= findViewById(R.id.layerBtn);
+        layer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    Toast.makeText(NavigationView.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    Toast.makeText(NavigationView.this, "NORMAL VIEW", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private  void bounds(double lat, double lng){

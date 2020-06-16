@@ -50,7 +50,6 @@ public class SearchRecyclerView extends AppCompatActivity {
 
 
 
-
         rvSearch= findViewById(R.id.rvSearch);
         search= findViewById(R.id.search);
 
@@ -69,15 +68,11 @@ public class SearchRecyclerView extends AppCompatActivity {
 
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 return false;
             }
         });
-
     }
-
-
 }

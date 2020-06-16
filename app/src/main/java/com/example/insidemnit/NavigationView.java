@@ -95,34 +95,34 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     private void DirectionRouteSearch(String locationString) {
         String location = locationString;
         switch (location) {
-            case "26.865109,75.807679&&26.864692,75.814671":
+            case "26.865109,75.807679&&26.864813,75.813979":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.8641208, 75.8123802)).add(new LatLng(26.8649378, 75.8133903)).add(new LatLng(26.864816, 75.813957)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.862416,75.816007":
+            case "26.865109,75.807679&&26.862461,75.816039":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.862069179925147, 75.8159636393516)).add(new LatLng(26.862416612543047, 75.81600735940765)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.861856,75.815994":
+            case "26.865109,75.807679&&26.861880,75.816020":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.862069179925147, 75.8159636393516)).add(new LatLng(26.861856699979494, 75.81599475307439)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.860658,75.815774":
+            case "26.865109,75.807679&&26.860681,75.815778":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86065394225311, 75.81556655508496)).add(new LatLng(26.860656335073237, 75.81576101523854)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8600513,75.8177366":
+            case "26.865109,75.807679&&26.859845,75.817698":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86117748986232, 75.81556601877412)).add(new LatLng(26.8611449477125, 75.81720270291146)).add(new LatLng(26.86081761059908, 75.8177686490136)).add(new LatLng(26.860055735211915, 75.81780083552171)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8605622,75.8172779":
+            case "26.865109,75.807679&&26.860589,75.817616":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86117748986232, 75.81556601877412)).add(new LatLng(26.8611449477125, 75.81720270291146)).add(new LatLng(26.86081761059908, 75.8177686490136)).add(new LatLng(26.860568278795263, 75.81773673074262)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8608169,75.8190871":
+            case "26.865109,75.807679&&26.860753,75.819367":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86117748986232, 75.81556601877412)).add(new LatLng(26.8611449477125, 75.81720270291146)).add(new LatLng(26.86081761059908, 75.8177686490136)).add(new LatLng(26.860520900866508, 75.81835068836976)).add(new LatLng(26.86053956478191, 75.81938253421053)).add(new LatLng(26.860683133972472, 75.81935866256667)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8596827,75.8184759":
+            case "26.865109,75.807679&&26.859652,75.818441":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86117748986232, 75.81556601877412)).add(new LatLng(26.8611449477125, 75.81720270291146)).add(new LatLng(26.86081761059908, 75.8177686490136)).add(new LatLng(26.860520900866508, 75.81835068836976)).add(new LatLng(26.859836617888302, 75.81826612962615)).add(new LatLng(26.859754782788844, 75.81841552870102)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8601717,75.8188556":
+            case "26.865109,75.807679&&26.860344,75.819365":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.86117748986232, 75.81556601877412)).add(new LatLng(26.8611449477125, 75.81720270291146)).add(new LatLng(26.86081761059908, 75.8177686490136)).add(new LatLng(26.860520900866508, 75.81835068836976)).add(new LatLng(26.86053956478191, 75.81938253421053)).add(new LatLng(26.860359212291854, 75.81937119982214)).width(5).color(Color.RED));
                 break;
-            case "26.865109,75.807679&&26.8627459,75.8202557":
+            case "26.865109,75.807679&&26.862243,75.820118":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863243488368173, 75.81676543376402)).add(new LatLng(26.86232083427693, 75.81829482937705)).add(new LatLng(26.861996372200988, 75.81941331053626)).add(new LatLng(26.862123668315306, 75.82008976368256)).width(5).color(Color.RED));
                 break;
         }

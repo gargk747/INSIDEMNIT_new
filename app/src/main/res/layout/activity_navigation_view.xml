@@ -62,6 +62,20 @@
         android:background="@drawable/bg_round"
         android:elevation="5dp"
         />
+    <ImageButton
+        android:id="@+id/floorplan"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/floorplanicon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/floating_type"
+        android:elevation="5dp"
+        />
 
     <fragment
         android:id="@+id/map"

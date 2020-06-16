@@ -42,6 +42,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     TextView fromSearch;
     TextView toSearch;
     ImageButton layer;
+    ImageButton floorplan;
     MarkerOptions markerOptions;
     MarkerOptions markerOptions1;
 
@@ -61,6 +62,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
         });
         fromSearch = findViewById(R.id.searchFrom);
         toSearch = findViewById(R.id.searchTo);
+        floorplan=findViewById(R.id.floorplan);
     }
 
     public void getIntentActivity() {
@@ -100,6 +102,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
                 break;
             case "26.865109,75.807679&&26.862461,75.816039":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.862069179925147, 75.8159636393516)).add(new LatLng(26.862416612543047, 75.81600735940765)).width(5).color(Color.RED));
+                floorplan.setVisibility(View.VISIBLE);
                 break;
             case "26.865109,75.807679&&26.861880,75.816020":
                 map.addPolyline(new PolylineOptions().add(fromLatLng).add(new LatLng(26.863548, 75.815149)).add(new LatLng(26.863408, 75.815399)).add(new LatLng(26.86321149227327, 75.815559966813)).add(new LatLng(26.863053091019935, 75.81559993171095)).add(new LatLng(26.86207444411098, 75.81559322618841)).add(new LatLng(26.862069179925147, 75.8159636393516)).add(new LatLng(26.861856699979494, 75.81599475307439)).width(5).color(Color.RED));
@@ -150,6 +153,16 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
                     map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                     Toast.makeText(NavigationView.this, "NORMAL VIEW", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        floorplan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentfloor= new Intent(NavigationView.this,FloorPlan.class);
+                intentfloor.putExtra("toLocationName",toLocationName);
+                intentfloor.putExtra("toLocationLat",toLat);
+                intentfloor.putExtra("toLocationLng",toLng);
+                startActivity(intentfloor);
             }
         });
     }

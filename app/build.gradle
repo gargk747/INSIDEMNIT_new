@@ -32,5 +32,4 @@ dependencies {
     implementation 'com.github.jd-alexander:library:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
 }

@@ -33,8 +33,8 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
     double toLng;
     MarkerOptions markerOptions;
     ImageButton layer;
-    double LatitudeList[]={26.865109,26.865015,26.864954,26.864838,26.864788};
-    double LongitudeList[]={75.807679,75.808016,75.808470,75.808864,75.809230};
+    double LatitudeList[]={26.865109,26.864824,26.864954,26.864838,26.864788,26.864945};
+    double LongitudeList[]={75.807679,75.808828,75.808470,75.808864,75.809230,75.813401};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,25 +84,25 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
 
         for(int i=0;i<LatitudeList.length;i++){
             if(fromLat>LatitudeList[i]&&fromLng>LongitudeList[i]){
-                if((fromLat-LatitudeList[i]<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                if((fromLat-LatitudeList[i]<=0.101)&&(fromLng-LongitudeList[i]<=0.101)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(fromLat>LatitudeList[i]&&LongitudeList[i]>fromLng){
-                if((fromLat-LatitudeList[i]<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                if((fromLat-LatitudeList[i]<=0.101)&&(LongitudeList[i]-fromLng<=0.101)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&fromLng>LongitudeList[i]){
-                if((LatitudeList[i]-fromLat<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                if((LatitudeList[i]-fromLat<=0.101)&&(fromLng-LongitudeList[i]<=0.101)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&LongitudeList[i]>fromLng){
-                if((LatitudeList[i]-fromLat<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                if((LatitudeList[i]-fromLat<=0.101)&&(LongitudeList[i]-fromLng<=0.101)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }

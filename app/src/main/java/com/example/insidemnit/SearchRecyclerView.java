@@ -23,7 +23,7 @@ public class SearchRecyclerView extends AppCompatActivity {
 
 
         searchClasses.add(new SearchClass(getIntent().getStringExtra("currentLocation"),new LatLng(getIntent().getDoubleExtra("curLocationLat",0),getIntent().getDoubleExtra("curLocationLng",0))));
-        searchClasses.add(new SearchClass("GARGI",new LatLng(26.864813, 75.813979)));
+        searchClasses.add(new SearchClass("GARGI",new LatLng(26.864945, 75.813401)));
         searchClasses.add(new SearchClass("HOSTEL 1 PARIJAT", new LatLng(26.862461, 75.816039)));
         searchClasses.add(new SearchClass("HOSTEL 2 CHAITANYA",new LatLng(26.861880, 75.816020)));
         searchClasses.add(new SearchClass("HOSTEL 3",new LatLng(26.860681, 75.815778)));

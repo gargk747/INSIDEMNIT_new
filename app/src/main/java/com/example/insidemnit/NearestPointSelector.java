@@ -84,25 +84,25 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
 
         for(int i=0;i<LatitudeList.length;i++){
             if(fromLat>LatitudeList[i]&&fromLng>LongitudeList[i]){
-                if((fromLat-LatitudeList[i]<=0.101)&&(fromLng-LongitudeList[i]<=0.101)){
+                if((fromLat-LatitudeList[i]<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(fromLat>LatitudeList[i]&&LongitudeList[i]>fromLng){
-                if((fromLat-LatitudeList[i]<=0.101)&&(LongitudeList[i]-fromLng<=0.101)){
+                if((fromLat-LatitudeList[i]<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&fromLng>LongitudeList[i]){
-                if((LatitudeList[i]-fromLat<=0.101)&&(fromLng-LongitudeList[i]<=0.101)){
+                if((LatitudeList[i]-fromLat<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&LongitudeList[i]>fromLng){
-                if((LatitudeList[i]-fromLat<=0.101)&&(LongitudeList[i]-fromLng<=0.101)){
+                if((LatitudeList[i]-fromLat<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }

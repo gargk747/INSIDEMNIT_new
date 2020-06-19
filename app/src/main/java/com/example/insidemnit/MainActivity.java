@@ -51,7 +51,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int Request_code = 1;
     String api_key="AIzaSyAPEBZCsV9z-g0QlLU33GNuVO1C4h3GoO8";
-
+    private long backPressedtime;
+    private Toast backToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,6 +203,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         map.animateCamera(cameraUpdate);
 
     }
+
+
 
 
     @Override

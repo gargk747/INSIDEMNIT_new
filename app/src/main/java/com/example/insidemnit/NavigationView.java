@@ -1,21 +1,19 @@
 package com.example.insidemnit;
 
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,13 +22,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class NavigationView extends FragmentActivity implements OnMapReadyCallback {
 
@@ -50,8 +44,8 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     MarkerOptions markerOptions;
     MarkerOptions markerOptions1;
     private static final int NO_PARENT=-1;
-    double LatitudeList[]={26.865109,26.864824,26.864108,26.864617,26.865043,26.864096,26.864945,26.863538,26.861161,26.860533,26.862243};
-    double LongitudeList[]={75.807679,75.808828,75.808676,75.810057,75.810146,75.812441,75.813401,75.815254,75.815586,75.819951,75.820118};
+    double LatitudeList[]={26.865109,26.864824,26.864108,26.864617,26.865043,26.864096,26.864945,26.863538,26.861161,26.860533,26.862154388040576};
+    double LongitudeList[]={75.807679,75.808828,75.808676,75.810057,75.810146,75.812441,75.813401,75.815254,75.815586,75.819951,75.8201289315467};
     int test[]=new int[100];
     int a=0;
 
@@ -91,6 +85,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             map.addMarker(markerOptions);
 
             if (toLocationName != null) {
+                map.addMarker(markerOptions1);
                 bounds((fromLat + toLat) / 2, (fromLng + toLng) / 2);
             } else {
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(fromLatLng, 17));
@@ -127,12 +122,12 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
 
             int source=0;
             int destination=0;
-            for(int i=0;i<LatitudeList.length;i++){
-                if(fromLat==LatitudeList[i] && fromLng==LongitudeList[i]){
-                    source=i;
+            for(int i=0;i<LatitudeList.length;i++) {
+                if (fromLat == LatitudeList[i] && fromLng == LongitudeList[i]) {
+                    source = i;
                 }
-                if(toLat==LatitudeList[i] && toLng==LongitudeList[i]){
-                    destination=i;
+                if (toLat == LatitudeList[i] && toLng == LongitudeList[i]) {
+                    destination = i;
                 }
             }
 
@@ -201,13 +196,13 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
 
         printSolution(startVertex, shortestDistances, parents,destinationVertex);
     }
+
     private void printSolution(int startVertex,
                                int[] distances,
                                int[] parents, int destinationVertex)
     {
         int pointArray[]=printPath(startVertex,destinationVertex, parents);
         Polyline polyline;
-        int c=0;
         for(int i=0;i<pointArray.length;i++){
             Log.d("true", "printSolution: "+pointArray[i]);
             if(pointArray[i]==destinationVertex)
@@ -220,8 +215,6 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
     private int[] printPath(int startVertex, int currentVertex,
                                   int[] parents)
     {
-
-
         Log.d("new", "printPath: ");
         Log.d("point", ""+currentVertex);
         if (currentVertex == NO_PARENT)
@@ -231,8 +224,6 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
         printPath(startVertex,parents[currentVertex], parents);
         Log.d("points", ""+currentVertex);
 
-        MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[currentVertex],LongitudeList[currentVertex]));
-        map.addMarker(markerOptionss);
         test[a]=currentVertex;
         Log.d("new", "print"+test[a]);
         a++;

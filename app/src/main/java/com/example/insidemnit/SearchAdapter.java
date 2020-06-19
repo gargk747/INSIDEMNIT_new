@@ -58,6 +58,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 intent.putExtra("locationLat",searchClasses.get(position).getLatLng().latitude);
                 intent.putExtra("locationLng",searchClasses.get(position).getLatLng().longitude);
                 mContext.startActivity(intent);
+
             }
         });
 

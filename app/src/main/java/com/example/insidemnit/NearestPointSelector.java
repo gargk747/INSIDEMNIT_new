@@ -50,8 +50,8 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
 //            fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
 //            fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
 //            fromLatLng=new LatLng(fromLat,fromLng);
-            fromLat=26.865038;
-            fromLng=75.807928;
+            fromLat=26.861870;
+            fromLng=75.812923;
             fromLatLng= new LatLng(fromLat,fromLng);
             toLocationName=getIntent().getStringExtra("toLocationName");
             toLat=getIntent().getDoubleExtra("toLocationLat",00);

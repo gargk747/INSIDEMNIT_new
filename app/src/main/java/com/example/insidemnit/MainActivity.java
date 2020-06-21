@@ -17,10 +17,12 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
@@ -32,6 +34,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -48,9 +51,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     double locationLat;
     double locationLng;
     String locationName1;
+    GoogleApiClient googleApiClient;
     FusedLocationProviderClient fusedLocationProviderClient;
-    private static final int Request_code = 1;
-    String api_key="AIzaSyAPEBZCsV9z-g0QlLU33GNuVO1C4h3GoO8";
+    private static final int Request_code = 101;
+    String api_key = "AIzaSyAPEBZCsV9z-g0QlLU33GNuVO1C4h3GoO8";
     private long backPressedtime;
     private Toast backToast;
 
@@ -58,23 +62,23 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchbar=findViewById(R.id.searchbar);
+        searchbar = findViewById(R.id.searchbar);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
 
-}
+    }
 
     private void getIncomingIntent() {
-        Log.d("MainActivity","Incoming Intent");
-        if(getIntent().hasExtra("locationName")&& getIntent().hasExtra("locationLat")&&getIntent().hasExtra("locationLng")){
-            locationName1=getIntent().getStringExtra("locationName");
-            locationLat=getIntent().getDoubleExtra("locationLat",00);
-            locationLng=getIntent().getDoubleExtra("locationLng",00);
+        Log.d("MainActivity", "Incoming Intent");
+        if (getIntent().hasExtra("locationName") && getIntent().hasExtra("locationLat") && getIntent().hasExtra("locationLng")) {
+            locationName1 = getIntent().getStringExtra("locationName");
+            locationLat = getIntent().getDoubleExtra("locationLat", 00);
+            locationLng = getIntent().getDoubleExtra("locationLng", 00);
             searchbar.setText(locationName1);
-            LatLng latLng111= new LatLng(locationLat,locationLng);
-            MarkerOptions markerOptions=new MarkerOptions().position(latLng111).title(locationName1);
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111,17));
+            LatLng latLng111 = new LatLng(locationLat, locationLng);
+            MarkerOptions markerOptions = new MarkerOptions().position(latLng111).title(locationName1);
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111, 17));
             map.addMarker(markerOptions);
         }
     }
@@ -173,7 +177,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 map.clear();
                 LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));

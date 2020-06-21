@@ -7,16 +7,18 @@
     tools:context=".NearestPointSelector"
     android:orientation="vertical">
 
-    <TextView
+
+    <Button
         android:id="@+id/nearestPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select Your Nearest Point"
+        android:text="  Click on a Point Nearest to your Location"
         android:textColor="@color/colorBlack"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:layout_margin="5dp"
-        android:background="@drawable/square_textbox"/>
+        android:textSize="15dp"
+        android:textAlignment="textStart"
+        android:background="@drawable/floating_type"
+        android:elevation="5dp"
+        />
 
     <ImageButton
         android:id="@+id/currentlocpin"
@@ -28,7 +30,6 @@
         android:src="@drawable/blue_marker"
         android:background="@drawable/floating_type"
         android:elevation="5dp"
-
         />
 
     <ImageButton

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitCenter"/>
 
 
 

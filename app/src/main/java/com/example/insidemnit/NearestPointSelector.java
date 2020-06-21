@@ -66,13 +66,14 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map=googleMap;
+        map.getUiSettings().setMapToolbarEnabled(false);
         getIntentActivity();
         layer= findViewById(R.id.layerBtn);
         layer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
-                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                     Toast.makeText(NearestPointSelector.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
                 }
                 else{

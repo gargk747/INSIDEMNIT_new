@@ -425,7 +425,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             adjacencyMatrix[145][144]=115;
 
 
-
+            floorplan.setVisibility(View.VISIBLE);
             int source=0;
             int destination=0;
             for(int i=0;i<LatitudeList.length;i++) {

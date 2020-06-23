@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlack"
     tools:context=".FloorPlan">
 
     <TextView
@@ -13,22 +12,20 @@
         android:layout_height="wrap_content"
         android:text="After Entering the Building see the Below ROUTE to reach the Destination"
         android:textSize="20dp"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorBlack"
         android:textAlignment="center"
-        android:layout_margin="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/transparent_box"/>
+        android:layout_margin="5dp"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ViewPagerFloorplan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
         android:layout_below="@id/infofloor"
-        android:layout_marginTop="30dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_centerHorizontal="true"
         />
     <TextView
+        android:id="@+id/slideinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -36,7 +33,7 @@
         android:textSize="30dp"
         android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorBlack"/>
 
 
 </RelativeLayout>

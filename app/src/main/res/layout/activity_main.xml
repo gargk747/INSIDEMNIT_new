@@ -21,10 +21,11 @@
         android:hint="Search..."
         android:drawableStart="@drawable/places_ic_search"
         android:layout_margin="8dp"
-        android:elevation="3dp"
-        android:textSize="25dp"
+        android:textColor="@color/colorBlack"
+        android:elevation="10dp"
+        android:textSize="24dp"
         android:clickable="true"
-        android:background="@drawable/searchbarproperties"
+        android:background="@color/colorWhite"
         />
     <ImageButton
         android:id="@+id/layerBtn"
@@ -33,12 +34,10 @@
         android:clickable="true"
         android:layout_below="@id/searchbar"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:src="@drawable/layer"
         android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/bg_round"
-        android:elevation="5dp"
+        android:elevation="8dp"
         />
     <ImageButton
         android:id="@+id/locationBtn"
@@ -46,13 +45,12 @@
         android:layout_height="40dp"
         android:clickable="true"
         android:layout_below="@id/layerBtn"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/current_loc"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/bg_round"
-        android:elevation="5dp"
+        android:elevation="8dp"
         />
     <ImageButton
         android:id="@+id/locationMNITBtn"
@@ -60,18 +58,18 @@
         android:clickable="true"
         android:layout_height="40dp"
         android:layout_below="@id/locationBtn"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:src="@drawable/mnit_location"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
         android:background="@drawable/bg_round"
-        android:elevation="5dp"
+        android:elevation="8dp"
         />
 
     <ImageButton
         android:id="@+id/nav_btn"
         android:clickable="true"
+        android:visibility="invisible"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignEnd="@+id/searchbar"
@@ -80,5 +78,5 @@
         android:layout_marginBottom="25dp"
         android:background="@drawable/bg_round"
         android:src="@drawable/nav"
-        android:elevation="4dp"/>
+        android:elevation="8dp"/>
 </RelativeLayout>

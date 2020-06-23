@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        tools:targetApi="m"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".FloorPlan"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".NearestPointSelector"
@@ -41,8 +42,7 @@
 
         <activity
             android:name=".NavigationView"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchRecyclerView"
             android:theme="@style/AppTheme.NoActionBar"

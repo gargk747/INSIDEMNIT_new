@@ -63,7 +63,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         searchbar = findViewById(R.id.searchbar);
-
+        navBtn=findViewById(R.id.nav_btn);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
 
@@ -80,6 +80,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             MarkerOptions markerOptions = new MarkerOptions().position(latLng111).title(locationName1);
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng111, 17));
             map.addMarker(markerOptions);
+            navBtn.setVisibility(View.VISIBLE);
         }
     }
 
@@ -143,7 +144,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         getIncomingIntent();
 
-        navBtn=findViewById(R.id.nav_btn);
+
         navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

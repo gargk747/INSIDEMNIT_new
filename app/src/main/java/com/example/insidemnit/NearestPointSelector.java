@@ -50,8 +50,8 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
 //            fromLat=getIntent().getDoubleExtra("fromLocationLat",00);
 //            fromLng=getIntent().getDoubleExtra("fromLocationLng",00);
 //            fromLatLng=new LatLng(fromLat,fromLng);
-            fromLat=26.861870;
-            fromLng=75.812923;
+            fromLat=26.865102;
+            fromLng=75.807700;
             fromLatLng= new LatLng(fromLat,fromLng);
             toLocationName=getIntent().getStringExtra("toLocationName");
             toLat=getIntent().getDoubleExtra("toLocationLat",00);
@@ -73,7 +73,7 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
             @Override
             public void onClick(View view) {
                 if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
-                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     Toast.makeText(NearestPointSelector.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -85,25 +85,25 @@ public class NearestPointSelector extends FragmentActivity implements OnMapReady
 
         for(int i=0;i<LatitudeList.length;i++){
             if(fromLat>LatitudeList[i]&&fromLng>LongitudeList[i]){
-                if((fromLat-LatitudeList[i]<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                if((fromLat-LatitudeList[i]<=0.002)&&(fromLng-LongitudeList[i]<=0.002)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(fromLat>LatitudeList[i]&&LongitudeList[i]>fromLng){
-                if((fromLat-LatitudeList[i]<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                if((fromLat-LatitudeList[i]<=0.002)&&(LongitudeList[i]-fromLng<=0.002)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&fromLng>LongitudeList[i]){
-                if((LatitudeList[i]-fromLat<=0.001)&&(fromLng-LongitudeList[i]<=0.001)){
+                if((LatitudeList[i]-fromLat<=0.002)&&(fromLng-LongitudeList[i]<=0.002)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }
             }
             else if(LatitudeList[i]>fromLat&&LongitudeList[i]>fromLng){
-                if((LatitudeList[i]-fromLat<=0.001)&&(LongitudeList[i]-fromLng<=0.001)){
+                if((LatitudeList[i]-fromLat<=0.002)&&(LongitudeList[i]-fromLng<=0.002)){
                     MarkerOptions markerOptionss= new MarkerOptions().position(new LatLng(LatitudeList[i],LongitudeList[i]));
                     map.addMarker(markerOptionss);
                 }

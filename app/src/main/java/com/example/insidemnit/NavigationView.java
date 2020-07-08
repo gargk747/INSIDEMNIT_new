@@ -503,7 +503,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             Log.d("true", "printSolution: "+pointArray[i]);
             if(pointArray[i]==destinationVertex)
                 break;
-            polyline= map.addPolyline(new PolylineOptions().add(new LatLng(LatitudeList[pointArray[i]],LongitudeList[pointArray[i]])).add(new LatLng(LatitudeList[pointArray[i+1]],LongitudeList[pointArray[i+1]])).color(Color.RED).width(5));
+            polyline= map.addPolyline(new PolylineOptions().add(new LatLng(LatitudeList[pointArray[i]],LongitudeList[pointArray[i]])).add(new LatLng(LatitudeList[pointArray[i+1]],LongitudeList[pointArray[i+1]])).color(Color.RED).width(7));
 
         }
 
@@ -580,7 +580,7 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
-                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     Toast.makeText(NavigationView.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
                 }
                 else{

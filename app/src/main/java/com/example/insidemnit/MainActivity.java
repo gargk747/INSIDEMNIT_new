@@ -36,6 +36,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.List;
 
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -64,6 +68,8 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_main);
         searchbar = findViewById(R.id.searchbar);
         navBtn=findViewById(R.id.nav_btn);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(MainActivity.this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         getlastLocation();
 
@@ -85,9 +91,27 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void getlastLocation() {
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
+
+//        PermissionListener permissionListener= new PermissionListener() {
+//            @Override
+//            public void onPermissionGranted() {
+//                Toast.makeText(MainActivity.this,"Permission given",Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onPermissionDenied(List<String> deniedPermissions) {
+//                Toast.makeText(MainActivity.this,"Permission not given",Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        TedPermission.with(MainActivity.this)
+//                .setPermissionListener(permissionListener)
+//                .setPermissions(Manifest.permission.READ_CONTACTS)
+//                .check();
+
+        if (ActivityCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
+            Log.d("check0000000", "getlastLocation: ");
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
@@ -113,17 +137,19 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         else {
+            Log.d("check", "getlastLocation: ");
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this,new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
                     if (location != null) {
                         mlocation = location;
-                        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                        mapFragment.getMapAsync(MainActivity.this);
+
                     }
                 }
             });
         }
+
+
     }
 
     @Override
@@ -165,7 +191,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 if(map.getMapType()==GoogleMap.MAP_TYPE_NORMAL){
-                    map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     Toast.makeText(MainActivity.this, "SATELITE VIEW", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -178,6 +204,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         locationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getlastLocation();
                 map.clear();
                 LatLng latLng = new LatLng(mlocation.getLatitude(), mlocation.getLongitude());
                 MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));

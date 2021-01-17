@@ -2,7 +2,7 @@
 
 ## Installation Steps
 
- → Clone the repository
+ → Clone the repository either by Git CLI aur Terminal by   Git Clone https://github.com/gargk747/INSIDEMNIT_new.git
  
  → Open the project in Android Studio and build the project
  

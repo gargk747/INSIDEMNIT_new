@@ -50,3 +50,7 @@ In this application, the user will be able to see his current location in the Ma
     <td><img src="https://github.com/gargk747/INSIDEMNIT_new/blob/master/screenshots/Screenshot_9.jpg" width=270 height=480></td>
   </tr>
  </table>
+
+## Improvements
+1. Firebase implementing (Still working on it)
+2. Indoor Navigation

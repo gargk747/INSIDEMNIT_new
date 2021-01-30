@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentActivity;
 
@@ -25,6 +26,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class NavigationView extends FragmentActivity implements OnMapReadyCallback {
 
@@ -424,6 +430,24 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             adjacencyMatrix[144][145]=115;
             adjacencyMatrix[145][144]=115;
 
+
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("location");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int adjacencyMatrix1[][]=new int[LatitudeList.length][LongitudeList.length];
+                    for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                    {
+                        int child1=0;
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(NavigationView.this,"Opps",Toast.LENGTH_SHORT).show();
+                }
+            });
 
             floorplan.setVisibility(View.VISIBLE);
             int source=0;

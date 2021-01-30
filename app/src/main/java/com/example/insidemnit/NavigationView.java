@@ -431,22 +431,23 @@ public class NavigationView extends FragmentActivity implements OnMapReadyCallba
             adjacencyMatrix[145][144]=115;
 
 
-            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("location");
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference("distance");
             reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int adjacencyMatrix1[][]=new int[LatitudeList.length][LongitudeList.length];
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren())
-                    {
-                        int child1=0;
-
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int adjacencyMatrix1[][]=new int[LatitudeList.length][LongitudeList.length];
+                        for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                        {
+                            int child1=0;
+                            String childText=String.valueOf(child1);
+                            adjacencyMatrix1[child1][child1+1]= Integer.parseInt(dataSnapshot.child(childText).getValue(String.class));
+                        }
                     }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(NavigationView.this,"Opps",Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(NavigationView.this,"Opps",Toast.LENGTH_SHORT).show();
+                    }
             });
 
             floorplan.setVisibility(View.VISIBLE);
